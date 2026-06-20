@@ -1,44 +1,73 @@
 # Test Strategy Document
 
 ## Application
+
 Construction Payroll HRMS
 
 ## Objective
-Ensure workers receive correct salaries and payslips without errors.
 
-## Most Critical Flows
+The primary goal is to ensure that workers receive accurate salaries, payslips, and attendance records. Any failure in payroll can directly impact employees' income and company trust.
 
-1. Employee Onboarding
-2. Attendance & Overtime Entry
-3. Payroll Calculation
-4. Payslip Generation
-5. Employee Exit / Payroll Stop
+## Top 5 Critical Flows (Ranked by Business Impact)
 
-## Highest Risk Area
+### 1. Payroll Calculation
 
-Payroll calculation and payslip generation because incorrect salary directly impacts workers.
+**Who gets hurt:** Employees and Payroll Manager
 
-## Test Types
+**Worst consequence:** Incorrect salary calculation can result in underpayment or overpayment, causing financial loss, employee dissatisfaction, and payroll disputes.
 
-- Functional Testing
-- API Testing
-- End-to-End Testing
-- Regression Testing
-- Negative Testing
+### 2. Attendance & Overtime Processing
 
-## Automation Plan
+**Who gets hurt:** Employees
 
-Automate:
-- Payroll calculation flow
-- Payslip generation flow
-- Employee onboarding flow
+**Worst consequence:** Missing attendance or overtime records can lead to salary errors and loss of employee trust.
 
-Manual Testing:
-- Exploratory testing
-- UI validation
-- Edge cases
+### 3. Payslip Generation
 
-## Out of Scope
+**Who gets hurt:** Employees and HR Team
 
-- Browser compatibility testing
-- Performance testing
+**Worst consequence:** Employees receive incorrect or incomplete payslips, making payroll verification difficult.
+
+### 4. Employee Onboarding
+
+**Who gets hurt:** HR Team and New Employees
+
+**Worst consequence:** Employee records are incomplete or incorrect, affecting attendance tracking and payroll processing.
+
+### 5. Employee Exit / Payroll Stop
+
+**Who gets hurt:** Company Finance Team
+
+**Worst consequence:** Ex-employees continue receiving salary or remain active in the system, causing financial loss.
+
+## Automation vs Manual Testing
+
+### Automate
+
+* Payroll calculation validation
+* Employee create/update/delete flows
+* Payslip generation verification
+* API validation and business rule checks
+
+### Manual Testing
+
+* Exploratory testing
+* UI usability checks
+* Edge-case investigations
+* New feature validation
+
+### Keeping CI Fast
+
+* Run critical smoke tests on every commit.
+* Execute full regression suite nightly.
+* Prioritize high-risk business flows.
+* Avoid long-running UI tests unless necessary.
+
+## What I Will Not Test
+
+* Cosmetic UI differences that do not affect business functionality.
+* Browser combinations with negligible user usage.
+* Low-risk visual styling changes.
+
+Reason: Testing effort should focus on payroll accuracy, employee data integrity, and critical business workflows.
+
